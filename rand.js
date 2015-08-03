@@ -9,10 +9,23 @@ var rand = (function(){
 	charMap.special = charMap.alphaNumeric + specialChars;
 
 	var rand = {
+
+		shuffle: function(string){
+			var type = typeof string;
+			string = (string+'').split('');
+			for (var i = string.length; i > 0;) {
+				var random = parseInt(Math.random() * i);
+				var temp = string[--i];
+				string[i] = string[random];
+				string[random] = temp;
+			}
+
+			return (type === "number") ? +string.join('') : string.join('');
+		},
 		
 		string: function(length, specialChars){
 			length = length || 16;
-			var map = charMap[( specialChars  ? "special" : "alphaNumeric" )];
+			var map = rand.shuffle(charMap[( specialChars  ? "special" : "alphaNumeric" )]);
 			var randomString = "";
 			for(var i = 0; i < length; i++) randomString += map.charAt( Math.floor(Math.random() * map.length) );
 			return randomString;
@@ -30,30 +43,3 @@ var rand = (function(){
 
 	return rand;
 })();
-
-
-/*
-Random String (alpha-numeric)
---------------------------
-rand.string(length);
-
-
-Random String (with special characters)
---------------------------
-rand.string(length, true);
-
-
-Random Number
---------------------------
-rand.number(digits);
-
-
-Random Number (in specified range, include max)
---------------------------
-rand.range(min, max);
-
-
-Random Number (in specified range, exclude max)
---------------------------
-rand.range(min, max, true);
-*/
