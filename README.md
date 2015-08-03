@@ -27,5 +27,5 @@ Simple utility for random numbers and strings
 
 `rand.shuffle(string_or_number);`
 
-*Use the Fisher–Yates shuffle algorithm*
+<sup>*Shuffle uses the Fisher–Yates shuffle algorithm*</sup>
 
