@@ -23,3 +23,9 @@ Simple utility for random numbers and strings
 
 `rand.range(min, max, true);`
 
+####Random Shuffle
+
+`rand.shuffle(string_or_number);`
+
+*Use the Fisher–Yates shuffle algorithm*
+
